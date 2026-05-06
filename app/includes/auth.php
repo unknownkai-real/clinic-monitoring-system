@@ -1,8 +1,13 @@
 <?php
-require_once __DIR__ . '/../config/app.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 function requireAuth(): void {
-    if (empty($_SESSION['user'])) redirect_to('auth/login.php');
+    if (empty($_SESSION['user'])) {
+        header('Location: /app/auth/login.php');
+        exit;
+    }
 }
 
 function requireRole(array $roles): void {

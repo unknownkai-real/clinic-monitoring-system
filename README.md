@@ -10,12 +10,6 @@ After setup, open:
 
 > If your Apache document root points elsewhere, copy this repository into your XAMPP `htdocs` directory and adjust the URL path accordingly.
 
-
-### If your folder name is different
-If your project folder is named `clinic-monitoring-system-main`, use:
-- `http://localhost/clinic-monitoring-system-main/app/auth/login.php`
-- `http://localhost/clinic-monitoring-system-main/app/index.php`
-
 ## Default Admin Account
 - **Username:** `admin`
 - **Password:** `admin123` *(update immediately after first login)*

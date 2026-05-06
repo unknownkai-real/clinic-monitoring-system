@@ -1,19 +1,19 @@
-<?php $current = basename($_SERVER['PHP_SELF']); ?>
-<div class="app-shell">
-<aside class="sidebar shadow-sm">
-  <div class="p-3 border-bottom"><h5 class="mb-0 text-primary"><i class="bi bi-heart-pulse"></i> ClinicMS</h5></div>
-  <nav class="nav flex-column p-2">
-    <?php $links=['index.php'=>'speedometer2|Dashboard','students.php'=>'people|Students','employees.php'=>'person-badge|Employees','inventory.php'=>'capsule|Inventory','admissions.php'=>'clipboard2-pulse|Admissions','consultations.php'=>'journal-medical|Consultations','borrowings.php'=>'box-seam|Borrowings','first_aid.php'=>'bandage|First Aid'];
-    foreach($links as $file=>$meta): [$icon,$label]=explode('|',$meta); $active=($current===$file)?'active':''; $href=$file==='index.php'?base_url('index.php'):base_url('modules/'.$file); ?>
-    <a class="nav-link <?= $active ?>" href="<?= e($href) ?>"><i class="bi bi-<?= e($icon) ?> me-2"></i><?= e($label) ?></a>
-    <?php endforeach; ?>
-  </nav>
-</aside>
-<main class="content">
-<header class="topbar shadow-sm bg-white px-3 py-2 d-flex justify-content-between align-items-center">
-  <div><strong><?= e(ucfirst(str_replace('.php','',$current==='index.php'?'dashboard':$current))) ?></strong></div>
-  <div><?= e($_SESSION['user']['full_name']) ?> <span class="badge text-bg-info"><?= e($_SESSION['user']['role']) ?></span>
-  <a class="btn btn-outline-danger btn-sm ms-2" href="<?= e(base_url('auth/logout.php')) ?>" onclick="return confirm('Logout now?')">Logout</a></div>
-</header>
-<div class="container-fluid p-3">
-<nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= e(base_url('index.php')) ?>">Home</a></li><li class="breadcrumb-item active"><?= e(ucfirst(str_replace('.php','',$current==='index.php'?'Dashboard':$current))) ?></li></ol></nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/app/index.php">ClinicMS</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto">
+        <?php foreach ([
+          'students.php'=>'Students', 'employees.php'=>'Employees', 'inventory.php'=>'Inventory',
+          'admissions.php'=>'Admissions', 'consultations.php'=>'Consultations', 'borrowings.php'=>'Borrowings', 'first_aid.php'=>'First Aid'
+        ] as $file=>$label): ?>
+          <li class="nav-item"><a class="nav-link" href="/app/modules/<?= $file ?>"><?= $label ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+      <span class="text-white me-3"><?= htmlspecialchars($_SESSION['user']['full_name']) ?> (<?= htmlspecialchars($_SESSION['user']['role']) ?>)</span>
+      <a class="btn btn-sm btn-outline-light" href="/app/auth/logout.php" onclick="return confirm('Logout?')">Logout</a>
+    </div>
+  </div>
+</nav>
+<div class="container py-4">
