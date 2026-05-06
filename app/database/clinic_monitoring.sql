@@ -12,7 +12,7 @@ CREATE TABLE users (
  deleted_at TIMESTAMP NULL
 );
 INSERT INTO users (username,password_hash,full_name,role,created_at,updated_at) VALUES
-('admin','$2y$10$0Ob5w3Yf7vdv7nXmvGw2Vuv7hQHqomcM6po7fK1vNXX4v6jY1p2dG','System Administrator','admin',NOW(),NOW());
+('admin','$2y$12$buiVLNZlKD/FkyXcXH3yIOdOZ49MVshLaAty1bajglsXGOMHFsKH6','System Administrator','admin',NOW(),NOW());
 
 CREATE TABLE students (id INT AUTO_INCREMENT PRIMARY KEY, student_id VARCHAR(50) UNIQUE, first_name VARCHAR(80), last_name VARCHAR(80), course VARCHAR(120), department VARCHAR(120), medical_status VARCHAR(120), medical_note TEXT, created_at TIMESTAMP NULL, updated_at TIMESTAMP NULL, deleted_at TIMESTAMP NULL);
 CREATE TABLE employees (id INT AUTO_INCREMENT PRIMARY KEY, employee_id VARCHAR(50) UNIQUE, first_name VARCHAR(80), last_name VARCHAR(80), designation VARCHAR(120), department VARCHAR(120), medical_status VARCHAR(120), medical_note TEXT, created_at TIMESTAMP NULL, updated_at TIMESTAMP NULL, deleted_at TIMESTAMP NULL);
